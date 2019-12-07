@@ -1,19 +1,20 @@
 package com.gojek.parkinglot.service;
 
 import java.util.List;
-import com.gojek.parkinglot.model.Vehicle;
 
 public interface ParkingService {
 
-	public void createParkingLot(int capacity);
+	public void createParkingLot(int capacity) throws Exception;
 	
-	public void leaveSlot(int slot);
+	public void parkVehicle(String vehiceRegNo, String colour) throws Exception;
 	
-	public void status();
+	public void leaveSlot(int slot) throws Exception;
 	
-	public List<Vehicle> getRegCarWithColours(String colour);
+	public void status() throws Exception;
 	
-	public List<Integer> getSlotsWithColours(String regNo);
+	public List<String> getRegCarWithColours(String colour) throws Exception;
 	
-	public List<Integer> getSlotsForRegNo(String regNo);
+	public List<Integer> getSlotsWithColours(String regNo) throws Exception;
+	
+	public Integer getSlotsForRegNo(String regNo) throws Exception;
 }

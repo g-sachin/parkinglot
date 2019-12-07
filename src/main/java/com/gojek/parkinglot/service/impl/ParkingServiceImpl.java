@@ -1,45 +1,61 @@
 package com.gojek.parkinglot.service.impl;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import com.gojek.parkinglot.model.Vehicle;
+import com.gojek.parkinglot.repository.ParkingLotMemoryManager;
 import com.gojek.parkinglot.service.ParkingService;
 
 public class ParkingServiceImpl implements ParkingService {
 
+	private ParkingLotMemoryManager memoryManager = null;
+	private Logger logger = Logger.getLogger(ParkingServiceImpl.class.getName());
+	
+	public ParkingServiceImpl(){
+		this.memoryManager = ParkingLotMemoryManager.getInstance();
+	}
+	
 	@Override
-	public void createParkingLot(int capacity) {
-
+	public void createParkingLot(int capacity) throws Exception {
+		memoryManager.createParkingLot(capacity);
 	}
 
 	@Override
-	public void leaveSlot(int slot) {
-		// TODO Auto-generated method stub
-
+	public void leaveSlot(int slot) throws Exception {
+		memoryManager.leaveVehicle(slot);
 	}
 
 	@Override
-	public void status() {
-		// TODO Auto-generated method stub
-
+	public void status() throws Exception {
+		memoryManager.getStatus();
 	}
 
 	@Override
-	public List<Vehicle> getRegCarWithColours(String colour) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<String> getRegCarWithColours(String colour) throws Exception {
+		List<String> vehicleList = memoryManager.getRegNumberForColor(colour);
+		logger.info(vehicleList.toString());
+		return vehicleList;
 	}
 
 	@Override
-	public List<Integer> getSlotsWithColours(String regNo) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Integer> getSlotsWithColours(String colour) throws Exception {
+		List<Integer> slotList = memoryManager.getSlotNumbersFromCarWithColor(colour);
+		logger.info(slotList.toString());
+		return slotList;
 	}
 
 	@Override
-	public List<Integer> getSlotsForRegNo(String regNo) {
-		// TODO Auto-generated method stub
-		return null;
+	public Integer getSlotsForRegNo(String regNo) throws Exception {
+		int slot = memoryManager.getSlotNoForRegistrationNo(regNo);
+		String result = (String) (slot != -1 ? slot : "Not Found");
+		logger.info(result);
+		return slot;
+	}
+
+	@Override
+	public void parkVehicle(String vehiceRegNo, String colour) throws Exception {
+		memoryManager.parkVehicle(new Vehicle(vehiceRegNo, colour));
 	}
 
 }

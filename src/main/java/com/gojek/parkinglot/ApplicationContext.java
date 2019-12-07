@@ -16,15 +16,18 @@ public class ApplicationContext {
 	public static void main(String[] args) {
 		System.out.println("Hello World!");
 		
+		// Mode: File 
 		try {
-			readInputFile(args[0]);
+			new ApplicationContext().readInputFile(args[0]);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
+		//Mode: Interactive 
+		//TODO
 	}
 	
-	private static void readInputFile(String fileName) throws Exception{
+	private void readInputFile(String fileName) throws Exception{
 		if(fileName == null)
 			throw new Exception("File not found");
 		
@@ -38,12 +41,14 @@ public class ApplicationContext {
 			String line = br.readLine();
 			while (line != null){
 				//1. validate input
-				//2. if OK, process input command
-				//3. process data
+				if(controller.validate(line))
+					controller.executeCommand(line);
+				else
+					System.out.println("Invalid operation: "+line);
 				line = br.readLine();
 			}
 		}catch(Exception ex){
-			
+			ex.printStackTrace();
 		}finally {
 			if (fr != null)
 				try {
