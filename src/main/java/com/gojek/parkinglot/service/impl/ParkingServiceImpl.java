@@ -4,16 +4,16 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import com.gojek.parkinglot.model.Vehicle;
-import com.gojek.parkinglot.repository.ParkingLotMemoryManager;
+import com.gojek.parkinglot.repository.ParkingLotMemoryManagerTest;
 import com.gojek.parkinglot.service.ParkingService;
 
 public class ParkingServiceImpl implements ParkingService {
 
-	private ParkingLotMemoryManager memoryManager = null;
+	private ParkingLotMemoryManagerTest memoryManager = null;
 	private Logger logger = Logger.getLogger(ParkingServiceImpl.class.getName());
 	
 	public ParkingServiceImpl(){
-		this.memoryManager = ParkingLotMemoryManager.getInstance();
+		this.memoryManager = ParkingLotMemoryManagerTest.getInstance();
 	}
 	
 	@Override

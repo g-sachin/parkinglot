@@ -14,7 +14,7 @@ import com.gojek.parkinglot.util.ParkingStrategy;
 
 public class ParkingLotMemoryManager {
 
-	private static ParkingLotMemoryManager instance = null;
+	private static ParkingLotMemoryManagerTest instance = null;
 	private ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
 	// Map of slot with vehicle details
 	private Map<Integer, Vehicle> parkingLotMap = new ConcurrentHashMap<>();
@@ -26,11 +26,11 @@ public class ParkingLotMemoryManager {
 		this.parkingStrategy = new NearestEntryStrategy();
 	}
 
-	public static ParkingLotMemoryManager getInstance() {
+	public static ParkingLotMemoryManagerTest getInstance() {
 		if (instance == null) {
-			synchronized (ParkingLotMemoryManager.class) {
+			synchronized (ParkingLotMemoryManagerTest.class) {
 				if (instance == null)
-					instance = new ParkingLotMemoryManager();
+					instance = new ParkingLotMemoryManagerTest();
 			}
 		}
 		return instance;
