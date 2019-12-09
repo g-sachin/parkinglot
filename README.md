@@ -33,6 +33,6 @@ Next step is to run program:
 To validate the correcteness of program execute functional test
 ```bash
     cd bin
-    run_functional_tests
+    ./run_functional_tests.sh
 ```
 
