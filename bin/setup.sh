@@ -1,6 +1,8 @@
 #!/bin/bash
 set -x 
 
+# script to install maven
+
 declare -r apacheMavenDownloadUrl="http://apache.cbox.biz/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz"
 declare -r directoryName="mvn/"
 
@@ -24,3 +26,8 @@ sudo ln -s "$workingDir/$resultDirectoryName/bin/mvn" /usr/local/bin/mvn
 rm -v $resultFileName
 
 printf "\nMaven 3 is installed!\n"
+
+expot MAVEN_HOME=/usr/local/bin/mvn
+print"configured maven path"
+
+mvn -version
