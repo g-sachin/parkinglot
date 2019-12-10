@@ -2,7 +2,7 @@
 
 ## Prerequisites
 1. java 1.8
-2. maven 4.0.0
+2. maven 3.3.9
 3. git
 3. build (linux)
 
