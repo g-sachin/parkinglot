@@ -1,5 +1,6 @@
 package com.gojek.parkinglot.controller;
 
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,24 +20,30 @@ public class ParkingController extends GenericController {
 	public void executeCommand(String input) {
 		String command[] = input.trim().split(" ");
 		String operation = command[0];
-
 		try {
 			switch (operation) {
 			case ParkingLotConstants.CREATE_PARKING_LOT:
 				int capacity = Integer.parseInt(command[1].trim());
-				logger.info("Creating parking lot with capacity: " + capacity);
 				parkingSvc.createParkingLot(capacity);
+				logger.info("Created a parking lot with " + capacity+" slots");
 				break;
 			case ParkingLotConstants.PARK:
 				String vehiceRegNo = command[1];
 				String colour = command[2];
-				parkingSvc.parkVehicle(vehiceRegNo, colour);
+				int allotedSlot = parkingSvc.parkVehicle(vehiceRegNo, colour);
+				if(allotedSlot == ParkingLotConstants.NOT_AVAILABLE)
+					logger.info("Sorry, parking lot is full");
+				else 
+					logger.info("Allocated slot number: "+allotedSlot);
 				break;
 			case ParkingLotConstants.LEAVE:
-				parkingSvc.leaveSlot(Integer.parseInt(command[1].trim()));
+				int slot = Integer.parseInt(command[1].trim());
+				parkingSvc.leaveSlot(slot);
+				logger.info("Slot number "+slot+" is freee");
 				break;
 			case ParkingLotConstants.STATUS:
-				parkingSvc.status();
+				List<String> status = parkingSvc.status();
+				logger.info(status.toString());
 				break;
 			case ParkingLotConstants.REG_NUM_FOR_CAR_WITH_COLOUR:
 				parkingSvc.getRegCarWithColours(command[1].trim());

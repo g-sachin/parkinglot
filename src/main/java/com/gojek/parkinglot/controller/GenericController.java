@@ -1,6 +1,9 @@
 package com.gojek.parkinglot.controller;
 
+import java.util.logging.Logger;
+
 public class GenericController {
+	private Logger logger = Logger.getGlobal();
 	public boolean validate(String input) throws Exception{
 		if (input == null || input.isEmpty())
 			throw new Exception("Invalid input");
@@ -8,18 +11,19 @@ public class GenericController {
 		String params[] = input.trim().split(" ");
 		String command = params[0];
 		
+		logger.info("Executing command **********<"+input+">**********");
 		return ParkingLotCommands.validate(command, params.length);
 	}
 	
 
 	enum ParkingLotCommands{
-		CREATE_PARKING_LOT("create_parking_lot", 1),
+		CREATE_PARKING_LOT("create_parking_lot", 2),
 		PARK("park", 3),
-		LEAVE("leave", 1),
-		STATUS("status", 0),
-		REGISTRATION_NUMBERS_FOR_CARS_WITH_COLOUR("registration_numbers_for_cars_with_colour", 1),
-		SLOT_NUMBERS_FOR_CARS_WITH_COLOUR("slot_numbers_for_cars_with_colour ", 1),
-		SLOT_NUMBER_FOR_REGISTRATION_NUMBER("slot_number_for_registration_number ", 1);
+		LEAVE("leave", 2),
+		STATUS("status", 1),
+		REGISTRATION_NUMBERS_FOR_CARS_WITH_COLOUR("registration_numbers_for_cars_with_colour", 2),
+		SLOT_NUMBERS_FOR_CARS_WITH_COLOUR("slot_numbers_for_cars_with_colour", 2),
+		SLOT_NUMBER_FOR_REGISTRATION_NUMBER("slot_number_for_registration_number", 2);
 		
 		String command;
 		int commandLength;

@@ -16,9 +16,11 @@ public class ApplicationContext {
 	public static void main(String[] args) {
 		System.out.println("Hello World!");
 		
+		String file = "D:\\eclipse-workspace\\gojek\\parkinglot\\src\\main\\resources\\file_inputs.txt";
 		// Mode: File 
 		try {
-			new ApplicationContext().readInputFile(args[0]);
+			//new ApplicationContext().readInputFile(args[0]);
+			new ApplicationContext().readInputFile(file);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -44,7 +46,7 @@ public class ApplicationContext {
 				if(controller.validate(line))
 					controller.executeCommand(line);
 				else
-					System.out.println("Invalid operation: "+line);
+					System.out.println("Command is not valid; operation: "+line);
 				line = br.readLine();
 			}
 		}catch(Exception ex){
