@@ -27,7 +27,7 @@ rm -v $resultFileName
 
 printf "\nMaven 3 is installed!\n"
 
-expot MAVEN_HOME=/usr/local/bin/mvn
+export MAVEN_HOME=/usr/local/bin/mvn
 print"configured maven path"
 
 mvn -version
