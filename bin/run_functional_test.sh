@@ -2,9 +2,8 @@
   
 #!/bin/sh
 
-##directory where jar file is located    
-dir=target
-##jar file name
-jar_name=parkinglot-1.0-SNAPSHOT.jar
+# path where pom.xml present
+cd ..
 
+# execute function UT's
 mvn test 
