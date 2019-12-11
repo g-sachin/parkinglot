@@ -21,7 +21,7 @@ setup.sh will install maven on system.
 
 ```bash
     cd bin
-    ./setup.sh
+    . ./setup.sh
 ```
 ## Development:
 
