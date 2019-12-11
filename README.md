@@ -16,7 +16,9 @@ Use `java --version` to see if you have java installed.
 
 Fork 🍴 this Repository. Then clone form nto your machine 💻 :
 
-Run bin/setup.sh to prepate environment:
+Run bin/setup.sh to prepare environment:
+setup.sh will install maven on system.
+
 ```bash
     cd bin
     ./setup.sh
