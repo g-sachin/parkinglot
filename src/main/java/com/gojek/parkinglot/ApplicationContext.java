@@ -16,11 +16,9 @@ public class ApplicationContext {
 	public static void main(String[] args) {
 		System.out.println("Hello World!");
 		
-		String file = "D:\\eclipse-workspace\\gojek\\parkinglot\\src\\main\\resources\\file_inputs.txt";
 		// Mode: File 
 		try {
-			//new ApplicationContext().readInputFile(args[0]);
-			new ApplicationContext().readInputFile(file);
+			new ApplicationContext().readInputFile(args[0]);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
