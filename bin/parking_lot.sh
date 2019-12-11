@@ -5,6 +5,9 @@ dir=target
 ##jar file name
 jar_name=parkinglot-0.0.1-SNAPSHOT.jar
 
-mvn clean install 
+#go back to directory where pom.xml is present to compile project
+cd ..
 
-java -jar $dir/$jar_name $arg1
+
+# maven exec plugin compile and run java main application
+mvn exec:java
